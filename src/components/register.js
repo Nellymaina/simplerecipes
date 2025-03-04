@@ -6,6 +6,8 @@ export default function Register() {
   const [formData, setFormData] = useState({ name: '', email: '', password: '', confirmPassword: '' });
   const [message, setMessage] = useState(null);
 const navigate=useNavigate()
+const BASE_URL="https://simplerecipesbackend.onrender.com"
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -14,7 +16,7 @@ const navigate=useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/register', formData);
+      const response = await axios.post(`${BASE_URL}/api/register`, formData);
       setMessage(response.data.message);
       navigate('/login')
     } catch (error) {

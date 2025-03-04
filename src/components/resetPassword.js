@@ -8,6 +8,8 @@ const ResetPassword = () => {
   const [message, setMessage] = useState("");
   const [token, setToken] = useState(null);
   const navigate = useNavigate();
+  const BASE_URL="https://simplerecipesbackend.onrender.com"
+
 
   // Extract token from URL
   const location = useLocation();
@@ -35,7 +37,7 @@ const ResetPassword = () => {
     console.log("Sending request with:", { token, password }); // Debugging
 
     try {
-      const response = await axios.post("http://localhost:5000/api/reset-password", {
+      const response = await axios.post(`${BASE_URL}/api/reset-password`, {
         token,
         password,
       });

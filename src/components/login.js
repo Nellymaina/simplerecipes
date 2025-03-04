@@ -9,12 +9,14 @@ const Login = () => {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
   const { loginUser } = useContext(Appcontext);
+  const BASE_URL="https://simplerecipesbackend.onrender.com"
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/api/login", { email, password });
+      const res = await axios.post(`${BASE_URL}/api/login`, { email, password });
 
 
     localStorage.setItem("user", JSON.stringify(res.data.user));

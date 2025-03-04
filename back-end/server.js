@@ -4,7 +4,7 @@ const axios = require('axios');
 const cors = require('cors');
 const mongoose=require('mongoose')
 const bodyParser = require('body-parser');
-const bcrypt =require('bcrypt');
+const bcrypt =require('bcryptjs');
 const jwt= require ('jsonwebtoken');
 const cookieParser=require('cookie-parser');
 const crypto = require("crypto");
@@ -14,7 +14,7 @@ const nodemailer = require('nodemailer');
 dotenv.config();
 
 const app = express();
-const PORT = 5000;
+const PORT = 'https://simplerecipesbackend.onrender.com';
 app.use(express.json(), cors({
   origin: 'http://localhost:3000',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',

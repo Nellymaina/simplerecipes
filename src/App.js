@@ -17,7 +17,7 @@ import Footer from './components/footer';
 function App() {
   return (
     
-    <BrowserRouter>
+    <BrowserRouter >
     <AppProvider>
       <Navbar />
       <Routes>

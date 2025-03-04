@@ -4,11 +4,13 @@ import axios from 'axios';
 export default function ForgotPassword() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState(null);
+  const BASE_URL="https://simplerecipesbackend.onrender.com"
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/forgot-password', { email });
+      const response = await axios.post(`${BASE_URL}/api/forgot-password`, { email });
       setMessage(response.data.message);
     } catch (error) {
       setMessage(error.response?.data?.message || 'Something went wrong.');

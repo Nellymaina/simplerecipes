@@ -6,11 +6,11 @@ export const Appcontext = createContext();
 export default function AppProvider({ children }) {
     const [restaurants, setRestaurants] = useState([]);
     const [user, setUser] = useState(null);
-
+const BASE_URL="https://simplerecipesbackend.onrender.com"
     useEffect(() => {
         const fetchRestaurants = async () => {
             try {
-                const detailedPlaces = await axios.get('http://localhost:5000/api/restaurants');
+                const detailedPlaces = await axios.get(`${BASE_URL}/api/restaurants`);
                 setRestaurants(detailedPlaces.data);
                 console.log("mounts")
             } catch (error) {
@@ -24,7 +24,7 @@ export default function AppProvider({ children }) {
     useEffect(() => {
         const checkLogin = async () => {
             try {
-                const res = await axios.get("http://localhost:5000/api/me", { withCredentials: true });
+                const res = await axios.get(`${BASE_URL}/api/me`, { withCredentials: true });
                 setUser(res.data.user);
             } catch (error) {
                 setUser(null);
