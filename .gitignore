@@ -4,8 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
-build
-dist
+.build
+.dist
 .cache
 
 # testing
