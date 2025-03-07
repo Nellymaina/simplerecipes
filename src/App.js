@@ -1,4 +1,5 @@
 import './App.css';
+import React, {useEffect, useState} from 'react'
 import Restaurants from './components/restaurants';
 import {BrowserRouter,Routes,Route } from 'react-router-dom'
 import AppProvider from './components/authorization';
@@ -20,6 +21,9 @@ function App() {
 const BASE_URL="https://simplerecipesbackend.onrender.com"
 
 useEffect(() => {
+  const [user, setUser] = useState(null); // Store logged-in user
+
+
   const checkAuth = async () => {
     try {
       const res = await axios.get('/api/auth', { withCredentials: true });
