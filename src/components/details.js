@@ -95,13 +95,13 @@ export default function RecipeDetails() {
               <p className="flex justify-center bg-yellow-300 text-white rounded-md font-semibold text-[16px] md:text-lg mb-[5vh] pb-1">
                 Add a Review
               </p>
-              {user && <ReviewForm
+               <ReviewForm
                 recipeId={id}
                 onReviewAdded={() => {
                   const allReviews = JSON.parse(localStorage.getItem("reviews")) || [];
                   setReviews(allReviews.filter((review) => review.recipeId === id));
                 }}
-              />}
+              />
             </div>
 
             
