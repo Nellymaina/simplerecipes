@@ -27,7 +27,7 @@ export default function Restaurants() {
     const halfStar = rating - fullStars >= 0.5 ? 1 : 0;
     const emptyStars = 5 - fullStars - halfStar;
     return (
-      <div className="flex text-green-300">
+      <div className="flex text-yellow-500">
         {[...Array(fullStars)].map((_, i) => <StarIcon key={i} fontSize="small"/>)}
         {halfStar === 1 && <StarIcon className="opacity-50" fontSize="small" />}
         {[...Array(emptyStars)].map((_, i) => <StarBorderIcon key={i + fullStars + halfStar} fontSize="small"/>)}

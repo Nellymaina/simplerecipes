@@ -57,7 +57,7 @@ export default function Navbar() {
         <NavLink to="/starter" className={({ isActive }) => `pr-4 ${isActive ? "text-blue-600 font-bold" : "text-white"}`}>Starter</NavLink></ul>
       {/* Search Icon (Right-Aligned) */}
       <div className='flex  w-[20v]'>
-      <Link to='/login'><button className='hidden md:absolute w-auto px-6 py-1 rounded-lg bg-red-600 text-white underline hover:bg-blue-600'>login</button></Link>
+      <Link to='/login'><button className='hidden md:visible w-auto px-6 py-1 rounded-lg bg-red-600 text-white underline hover:bg-blue-600'>login</button></Link>
       <Link to="/search" className="">
         <SearchIcon className="text-white ml-8" fontSize="medium" />
       </Link>

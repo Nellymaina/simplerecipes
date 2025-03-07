@@ -14,7 +14,27 @@ import ForgotPassword from './components/forgotPassword';
 import ResetPassword from './components/resetPassword';
 import Footer from './components/footer';
 
+
+
 function App() {
+const BASE_URL="https://simplerecipesbackend.onrender.com"
+
+useEffect(() => {
+  const checkAuth = async () => {
+    try {
+      const res = await axios.get('/api/auth', { withCredentials: true });
+      setUser(res.data.user); // Save user info in state
+    } catch (err) {
+      setUser(null); // User is not authenticated
+    }
+  };
+
+  checkAuth();
+}, []);
+
+
+
+
   return (
     
     <BrowserRouter basename="/simplerecipes" >
