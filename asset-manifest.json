@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/simplerecipes/static/css/main.81eb4234.css",
-    "main.js": "/simplerecipes/static/js/main.a04d5386.js",
+    "main.css": "/simplerecipes/static/css/main.5d076e22.css",
+    "main.js": "/simplerecipes/static/js/main.f177f6f7.js",
     "static/media/Easy2.png": "/simplerecipes/static/media/Easy2.8a68615ca4de0d84a75d.png",
     "index.html": "/simplerecipes/index.html",
-    "main.81eb4234.css.map": "/simplerecipes/static/css/main.81eb4234.css.map",
-    "main.a04d5386.js.map": "/simplerecipes/static/js/main.a04d5386.js.map"
+    "main.5d076e22.css.map": "/simplerecipes/static/css/main.5d076e22.css.map",
+    "main.f177f6f7.js.map": "/simplerecipes/static/js/main.f177f6f7.js.map"
   },
   "entrypoints": [
-    "static/css/main.81eb4234.css",
-    "static/js/main.a04d5386.js"
+    "static/css/main.5d076e22.css",
+    "static/js/main.f177f6f7.js"
   ]
 }
