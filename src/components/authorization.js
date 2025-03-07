@@ -11,8 +11,15 @@ export default function AppProvider({ children }) {
       const storedUser = localStorage.getItem("user");
     
       if (storedUser) {
-        setUser(JSON.parse(storedUser)); // Load user from localStorage if available
-      } else {
+        try {
+          setUser(JSON.parse(storedUser)); // Only parse if valid JSON
+        } catch (error) {
+          console.error("Error parsing user from localStorage:", error);
+          setUser(null);
+          localStorage.removeItem("user"); // Remove corrupted data
+        }
+      }
+      else {
         const checkAuth = async () => {
           try {
             const res = await axios.get(`${BASE_URL}/api/auth`, { withCredentials: true });
