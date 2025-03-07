@@ -67,7 +67,6 @@ const BASE_URL="https://simplerecipesbackend.onrender.com"
       }
     }, []);
     
-    console.log("API Response:", res.data);
 
     
 const loginUser = (userData) => {
