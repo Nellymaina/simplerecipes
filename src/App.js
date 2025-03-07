@@ -14,14 +14,15 @@ import Login from './components/login';
 import ForgotPassword from './components/forgotPassword';
 import ResetPassword from './components/resetPassword';
 import Footer from './components/footer';
-
+import axios from 'axios'
 
 
 function App() {
 const BASE_URL="https://simplerecipesbackend.onrender.com"
+const [user, setUser] = useState(null); // Store logged-in user
+
 
 useEffect(() => {
-  const [user, setUser] = useState(null); // Store logged-in user
 
 
   const checkAuth = async () => {
