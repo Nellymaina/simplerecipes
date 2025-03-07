@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import Restaurants from './components/restaurants';
 import {BrowserRouter,Routes,Route } from 'react-router-dom'
 import AppProvider from './components/authorization';
@@ -14,31 +14,9 @@ import Login from './components/login';
 import ForgotPassword from './components/forgotPassword';
 import ResetPassword from './components/resetPassword';
 import Footer from './components/footer';
-import axios from 'axios'
 
 
 function App() {
-const BASE_URL="https://simplerecipesbackend.onrender.com"
-const [user, setUser] = useState(null); // Store logged-in user
-
-
-useEffect(() => {
-
-
-  const checkAuth = async () => {
-    try {
-      const res = await axios.get('/api/auth', { withCredentials: true });
-      setUser(res.data.user); // Save user info in state
-    } catch (err) {
-      setUser(null); // User is not authenticated
-    }
-  };
-
-  checkAuth();
-}, []);
-
-
-
 
   return (
     

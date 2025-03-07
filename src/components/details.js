@@ -6,10 +6,11 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function RecipeDetails() {
   const { id } = useParams();
-  const { user } = useContext(Appcontext);
   const { restaurants } = useContext(Appcontext);
   const [reviews, setReviews] = useState([]);
   const [expandable, setExpandable] = useState(true);
+  const { user } = useContext(Appcontext);
+
 
   // Load reviews when the component mounts
   useEffect(() => {
@@ -94,17 +95,16 @@ export default function RecipeDetails() {
               <p className="flex justify-center bg-yellow-300 text-white rounded-md font-semibold text-[16px] md:text-lg mb-[5vh] pb-1">
                 Add a Review
               </p>
-              <ReviewForm
+              {user && <ReviewForm
                 recipeId={id}
                 onReviewAdded={() => {
-                  
                   const allReviews = JSON.parse(localStorage.getItem("reviews")) || [];
                   setReviews(allReviews.filter((review) => review.recipeId === id));
                 }}
-              />
+              />}
             </div>
 
-            {/* Display Reviews */}
+            
             <div className="p-6">
               <p className="flex justify-center bg-yellow-300 rounded-md font-semibold text-[16px] md:text-lg mb-[5vh] text-white pb-1">
                 Reviews

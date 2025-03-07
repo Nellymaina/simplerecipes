@@ -6,6 +6,7 @@ export const Appcontext = createContext();
 export default function AppProvider({ children }) {
     const [restaurants, setRestaurants] = useState([]);
     const [user, setUser] = useState(null);
+
 const BASE_URL="https://simplerecipesbackend.onrender.com"
     useEffect(() => {
         const fetchRestaurants = async () => {
@@ -21,26 +22,25 @@ const BASE_URL="https://simplerecipesbackend.onrender.com"
         fetchRestaurants();
     }, []);
 
-    useEffect(() => {
-        const checkLogin = async () => {
-            try {
-                const res = await axios.get(`${BASE_URL}/api/me`, { withCredentials: true });
-                setUser(res.data.user);
-            } catch (error) {
-                setUser(null);
-                localStorage.removeItem("user");
-                localStorage.removeItem("token");
-            }
-        };
     
-        checkLogin();
+    
+    useEffect(() => {
+    
+    
+      const checkAuth = async () => {
+        try {
+          const res = await axios.get('/api/auth', { withCredentials: true });
+          setUser(res.data.user); // Save user info in state
+        } catch (err) {
+          setUser(null); // User is not authenticated
+        }
+      };
+    
+      checkAuth();
     }, []);
     
 
-    const loginUser = (userData) => {
-        setUser(userData);
-        localStorage.setItem("user", JSON.stringify(userData));
-    };
+    
 
     const logoutUser = () => {
         setUser(null);
@@ -49,7 +49,7 @@ const BASE_URL="https://simplerecipesbackend.onrender.com"
 
 
     return (
-        <Appcontext.Provider value={{ restaurants, user, loginUser, logoutUser }}>
+        <Appcontext.Provider value={{ restaurants, user, logoutUser }}>
             {children}
         </Appcontext.Provider>
     );
