@@ -37,7 +37,10 @@ const BASE_URL="https://simplerecipesbackend.onrender.com"
     
       if (storedUser) {
         try {
-          setUser(JSON.parse(storedUser)); // Load user from localStorage if available
+          const parsedUser = JSON.parse(storedUser);
+          if (parsedUser) {
+            setUser(parsedUser);
+          }
         } catch (error) {
           console.error("Error parsing stored user:", error);
           setUser(null);
@@ -48,7 +51,8 @@ const BASE_URL="https://simplerecipesbackend.onrender.com"
           try {
             const res = await axios.get(`${BASE_URL}/api/auth`, { withCredentials: true });
     
-            // Check if user data exists before setting
+            console.log("API Response:", res.data); // Debug API response
+    
             if (res.data && res.data.user) {
               setUser(res.data.user);
               localStorage.setItem("user", JSON.stringify(res.data.user));
@@ -67,7 +71,6 @@ const BASE_URL="https://simplerecipesbackend.onrender.com"
       }
     }, []);
     
-
     
 const loginUser = (userData) => {
   setUser(userData);
