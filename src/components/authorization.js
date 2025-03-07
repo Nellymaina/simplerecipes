@@ -25,19 +25,26 @@ const BASE_URL="https://simplerecipesbackend.onrender.com"
     
     
     useEffect(() => {
-    
-    
-      const checkAuth = async () => {
-        try {
-          const res = await axios.get('/api/auth', { withCredentials: true });
-          setUser(res.data.user); // Save user info in state
-        } catch (err) {
-          setUser(null); // User is not authenticated
+        const storedUser = localStorage.getItem("user");
+      
+        if (storedUser) {
+          setUser(JSON.parse(storedUser)); // Load user from localStorage if available
+        } else {
+          const checkAuth = async () => {
+            try {
+              const res = await axios.get(`${BASE_URL}/api/auth`, { withCredentials: true });
+              setUser(res.data.user); // Save authenticated user in state
+              localStorage.setItem("user", JSON.stringify(res.data.user)); // Store in localStorage
+            } catch (err) {
+              setUser(null); // User is not authenticated
+              localStorage.removeItem("user"); // Clear localStorage if auth fails
+            }
+          };
+      
+          checkAuth();
         }
-      };
-    
-      checkAuth();
-    }, []);
+      }, []);
+      
     
 
     const loginUser = (userData) => {
