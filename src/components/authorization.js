@@ -10,9 +10,9 @@ export default function AppProvider({ children }) {
     useEffect(() => {
       const storedUser = localStorage.getItem("user");
     
-      if (storedUser) {
+      if (storedUser && storedUser !== "undefined") {
         try {
-          setUser(JSON.parse(storedUser)); // Only parse if valid JSON
+          setUser(JSON.parse(storedUser)); // Only parse valid JSON
         } catch (error) {
           console.error("Error parsing user from localStorage:", error);
           setUser(null);
