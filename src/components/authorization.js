@@ -37,7 +37,9 @@ const BASE_URL="https://simplerecipesbackend.onrender.com"
     
       if (storedUser) {
         setUser(JSON.parse(storedUser)); // Load user from localStorage if available
-      } else {
+      } 
+      
+      else {
       const checkLogin = async () => {
       try {
         const res = await axios.get(`${BASE_URL}/api/auth`, { withCredentials: true });
@@ -49,10 +51,11 @@ const BASE_URL="https://simplerecipesbackend.onrender.com"
           localStorage.removeItem("user");
           localStorage.removeItem("token");
       }
-    }
+    
   };
 
   checkLogin();
+}
 }, []);
       
     
