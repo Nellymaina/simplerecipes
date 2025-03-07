@@ -36,28 +36,39 @@ const BASE_URL="https://simplerecipesbackend.onrender.com"
       const storedUser = localStorage.getItem("user");
     
       if (storedUser) {
-        setUser(JSON.parse(storedUser)); // Load user from localStorage if available
-      } 
-      
-      else {
-      const checkLogin = async () => {
-      try {
-        const res = await axios.get(`${BASE_URL}/api/auth`, { withCredentials: true });
-        setUser(res.data.user);
-          localStorage.setItem("user", JSON.stringify(res.data.user)); // Store in localStorage
-
-      } catch (error) {
+        try {
+          setUser(JSON.parse(storedUser)); // Load user from localStorage if available
+        } catch (error) {
+          console.error("Error parsing stored user:", error);
           setUser(null);
           localStorage.removeItem("user");
-          localStorage.removeItem("token");
-      }
+        }
+      } else {
+        const checkLogin = async () => {
+          try {
+            const res = await axios.get(`${BASE_URL}/api/auth`, { withCredentials: true });
     
-  };
+            // Check if user data exists before setting
+            if (res.data && res.data.user) {
+              setUser(res.data.user);
+              localStorage.setItem("user", JSON.stringify(res.data.user));
+            } else {
+              throw new Error("Invalid response: Missing user data");
+            }
+          } catch (error) {
+            console.error("Login check failed:", error);
+            setUser(null);
+            localStorage.removeItem("user");
+            localStorage.removeItem("token");
+          }
+        };
+    
+        checkLogin();
+      }
+    }, []);
+    
+    console.log("API Response:", res.data);
 
-  checkLogin();
-}
-}, []);
-      
     
 const loginUser = (userData) => {
   setUser(userData);
