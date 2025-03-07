@@ -6,7 +6,7 @@ export const Appcontext = createContext();
 export default function AppProvider({ children }) {
     const [restaurants, setRestaurants] = useState([]);
     const [user, setUser] = useState(null);
-
+    
 const BASE_URL="https://simplerecipesbackend.onrender.com"
     useEffect(() => {
         const fetchRestaurants = async () => {
@@ -40,7 +40,10 @@ const BASE_URL="https://simplerecipesbackend.onrender.com"
     }, []);
     
 
-    
+    const loginUser = (userData) => {
+        setUser(userData);
+        localStorage.setItem("user", JSON.stringify(userData));
+    };
 
     const logoutUser = () => {
         setUser(null);
@@ -49,7 +52,7 @@ const BASE_URL="https://simplerecipesbackend.onrender.com"
 
 
     return (
-        <Appcontext.Provider value={{ restaurants, user, logoutUser }}>
+        <Appcontext.Provider value={{ restaurants, user, loginUser, logoutUser }}>
             {children}
         </Appcontext.Provider>
     );
