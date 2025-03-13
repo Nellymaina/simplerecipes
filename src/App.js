@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react'
 import Restaurants from './components/restaurants';
-import {HashRouter,Routes,Route } from 'react-router-dom'
+import {BrowserRouter,Routes,Route } from 'react-router-dom'
 import AppProvider from './components/authorization';
 import RecipeDetails from './components/details';
 import Cuisines from './components/cuisines';
@@ -20,7 +20,7 @@ function App() {
 
   return (
     
-    <HashRouter basename="/simplerecipes" >
+    <BrowserRouter basename="/simplerecipes" >
     <AppProvider>
       <Navbar />
       <Routes>
@@ -37,7 +37,7 @@ function App() {
       </Routes>
       <Footer/>
       </AppProvider>
-      </HashRouter>
+      </BrowserRouter>
        
   );
 }
