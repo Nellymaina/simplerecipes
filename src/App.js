@@ -20,7 +20,7 @@ function App() {
 
   return (
     
-    <HashRouter basename="/easyrecipes" >
+    <HashRouter basename="/simplerecipes" >
     <AppProvider>
       <Navbar />
       <Routes>
