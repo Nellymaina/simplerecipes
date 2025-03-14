@@ -14,6 +14,7 @@ import Login from './components/login';
 import ForgotPassword from './components/forgotPassword';
 import ResetPassword from './components/resetPassword';
 import Footer from './components/footer';
+import ScrollToTop from './components/ScrollToTop';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
     <BrowserRouter basename="/simplerecipes" >
     <AppProvider>
       <Navbar />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={< Restaurants />}></Route>
         <Route path="meals" element={<Cuisines />}></Route>

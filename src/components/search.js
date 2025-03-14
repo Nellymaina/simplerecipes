@@ -46,7 +46,27 @@ const [reviews, setReviews] = useState([]);
     if (minMatch) minutes += parseInt(minMatch[1]);
   
     return minutes;
+
   };
+
+
+  const result= restaurants.filter(item=> item.name.toLowerCase().includes(query.toLowerCase())).map((item, index) => (
+    <div key={index} className="w-auto border-1 border-gray-100 shadow-md rounded-2xl shadow-gray-100">
+      <Link to={`/recipe/${item._id}`}>
+        <img className="w-full" src={item.image} alt=""/>
+        <div className='p-2 flex justify-between'>
+        <div className='h-auto flex align-center'>
+<TimerIcon className='text-[2px] text-pink-400'/>
+<p className="text-[12px] sm:text-[13px] text-blue-400 font-medium"> {item.duration}</p>
+</div>
+            {renderStars(getAverageRating(item._id))}
+</div>
+<div className='p-2 h-auto flex justify-center align-center font-bold'><p className="text-[16px] sm:text-[16px]">{item.name}</p></div>
+
+        </Link>
+        </div>
+)
+)
 
 return(
   <div className='pt-[15vh] block w-[100%] p-2'>
@@ -57,24 +77,12 @@ return(
 <SearchIcon className="absolute right-[25vw] top-1/2 transform -translate-y-1/2 text-gray-400" />
 
 </div>
-{query===""? <div></div>:<div className=" grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-1 mt-[5vh]">
-      {restaurants.filter(item=> item.name.toLowerCase().includes(query.toLowerCase())).map((item, index) => (
-                    <div key={index} className="w-full">
-                      <Link to={`/recipe/${item._id}`}>
-                        <img className="w-full" src={item.image} alt=""/>
-                        <div className='p-2 flex justify-between'>
-                        <div className='h-auto flex align-center'>
-                <TimerIcon className='text-[2px] text-pink-400'/>
-              <p className="text-[12px] sm:text-[13px] text-blue-400 font-medium"> {item.duration}</p>
-              </div>
-                            {renderStars(getAverageRating(item._id))}
-</div>
-<div className='p-2 h-auto flex justify-center align-center font-bold'><p className="text-[16px] sm:text-[16px]">{item.name}</p></div>
-
-                        </Link>
-                        </div>
-)
-                )
-            }</div>}</div>
+{query===""? null: filteredRestaurants.length === 0 ? (
+            <p className="text-center text-gray-500 col-span-full text-lg">
+              No results found
+            </p>):
+(<div className=" grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-1 mt-[5vh]">
+  result
+      </div>)}</div>
     )
 }
