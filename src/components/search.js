@@ -77,7 +77,7 @@ return(
 <SearchIcon className="absolute right-[25vw] top-1/2 transform -translate-y-1/2 text-gray-400" />
 
 </div>
-{query===""? null: filteredRestaurants.length === 0 ? (
+{query===""? null: restaurants.length === 0 ? (
             <p className="text-center text-gray-500 col-span-full text-lg">
               No results found
             </p>):
