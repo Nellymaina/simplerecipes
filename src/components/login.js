@@ -69,6 +69,10 @@ const Login = () => {
           </Link>
         </div>
       </div>
+                <div className="text-center mt-4">
+          <Link to="/register" className="text-blue-500">
+            New User? Sign up
+          </Link>
     </div>
   );
 };
