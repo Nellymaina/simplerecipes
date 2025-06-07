@@ -27,13 +27,13 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={< Restaurants />}></Route>
-        <Route path="meals" element={<Cuisines />}></Route>
-        <Route path="desserts" element={<Desserts />}></Route>
-        <Route path="starter" element={<Starter />}></Route>
-        <Route path="search" element={<Search/>}></Route>
-        <Route path="recipe/:id" element={<RecipeDetails />}></Route>
-        <Route path="register" element={<Register />}></Route>
-        <Route path="login" element={<Login />}></Route>
+        <Route path="/meals" element={<Cuisines />}></Route>
+        <Route path="/desserts" element={<Desserts />}></Route>
+        <Route path="/starter" element={<Starter />}></Route>
+        <Route path="/search" element={<Search/>}></Route>
+        <Route path="/recipe/:id" element={<RecipeDetails />}></Route>
+        <Route path="/register" element={<Register />}></Route>
+        <Route path="/login" element={<Login />}></Route>
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
       </Routes>
